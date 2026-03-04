@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="a" value="5"/>
+    <parameter name="b" value="7"/>
+    <parameter name="sum" value="12"/>
+    <classes>
+      <class name="seleniumRevision.testNg">
+        <methods>
+          <include name="dataProviderTest" invocation-numbers="0 1"/>
+          <include name="test"/>
+        </methods>
+      </class> <!-- seleniumRevision.testNg -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
