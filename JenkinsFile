@@ -1,12 +1,14 @@
 pipeline {
     agent any
+
     tools {
         maven 'Maven3'
         jdk 'JDK17'
     }
 
     stages {
-        stage('checkout') {
+
+        stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -18,32 +20,29 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Run Tests') {
             steps {
                 bat 'mvn test'
             }
         }
-
-        stage('Publish Test Reports') {
+        
+        stage('Publish Cucumber Report') {
             steps {
                 cucumber buildStatus: 'UNSTABLE',
-                         fileIncludePattern: '**/cucumber.json',
-                         jsonReportDirectory: 'target'
+                fileIncludePattern: '**/cucumber.json',
+                jsonReportDirectory: 'target'
             }
+        }
 
-            post {
-                always {
-                    archiveArtifacts artifacts: 'target/**', allowEmptyArchive: true
-                }
+    }
 
-                success {
-                    echo 'Tests Passed Successfully'
-                }
+    post {
+        always {
+            archiveArtifacts artifacts: 'target/**', allowEmptyArchive: true
+        }
 
-                failure {
-                    echo 'Tests Failed'
-                }
-            }
+        failure {
+            echo 'Tests Failed'
         }
     }
 }
