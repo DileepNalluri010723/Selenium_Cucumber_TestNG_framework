@@ -8,19 +8,19 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git 'https://github.com/DileepNalluri010723/Selenium_Cucumber_TestNG_framework'
+                checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
