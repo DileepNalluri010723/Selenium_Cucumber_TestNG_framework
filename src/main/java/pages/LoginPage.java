@@ -45,7 +45,7 @@ public class LoginPage extends BasePage {
 	
 	public boolean ValidateFailureLogin(String errorMessage)
 	{
-		return this.wait.IsElementPresent(driver.findElement(By.xpath("//h3[contains(text(),'"+errorMessage+"')]")));
+		return this.wait.IsElementPresent(driver.findElement(By.xpath("//h1[contains(text(),'"+errorMessage+"')]")));
 	}
 	
 	public boolean ValidateSuccessfulLogin()

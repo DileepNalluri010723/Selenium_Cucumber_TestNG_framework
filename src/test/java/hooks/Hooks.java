@@ -22,7 +22,7 @@ public class Hooks {
 	}
 	
 	@After
-	public void tearDown(Scenario scenario, ITestResult testResult)
+	public void tearDown(Scenario scenario)
 	{
 		if (scenario.isFailed())
 		{
